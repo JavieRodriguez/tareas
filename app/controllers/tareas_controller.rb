@@ -1,6 +1,7 @@
 class TareasController < ApplicationController
 
 	before_action :set_tarea, except: [:index,:new,:create]
+	before_action :authenticate_usuario!, except: [:index,:show]
 
 	#get /tareas/
 	def index
@@ -10,6 +11,7 @@ class TareasController < ApplicationController
 
 	#get /tareas/:id
 	def show
+		@comentario= Comentario.new
 		#select * from tareas where id= :id
 		#llamar vista tareas/show.html.erb
 	end
@@ -21,8 +23,9 @@ class TareasController < ApplicationController
 
 	#post /tareas/
 	def create
-		@tarea = Tarea.new(tarea_params)
-
+		#@tarea= current_usuario.tareas.new(tarea_params)
+		@tarea = Tarea.new(tarea_params)		
+		@tarea.usuario_id= current_usuario.id		
 		if @tarea.save #insert into tareas(titulo,descripcion) values (:titulo,:descripcion)		
 			redirect_to @tarea
 		else
@@ -58,5 +61,6 @@ class TareasController < ApplicationController
 
 		def set_tarea
 			@tarea = Tarea.find(params[:id]) 
+			#select * from tareas where id=:id
 		end
 end

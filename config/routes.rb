@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   
-  devise_for :usuarios
-	resources :tareas
+  	devise_for :usuarios
+  	
+	resources :tareas do
+		resources :comentarios
+	end
 
   	#get 'welcome/index' 
   	get  'bienvenido', to: 'welcome#index' #ruta personalizada

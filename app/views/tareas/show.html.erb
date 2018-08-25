@@ -1,3 +1,20 @@
-<h1>Tarea <%=@tarea.id%></h1>
-<h2><%=@tarea.titulo%></h2>
-<p><%=@tarea.descripcion%></p>
+<div class="card">
+	<div class="card-header">
+		<h1>Tarea <%=@tarea.id%></h1>
+		<h2><%=@tarea.titulo%></h2>
+	</div>
+	<div class="card-body">
+		<p><%=@tarea.descripcion%></p>
+		<% unless @tarea.usuario.nil? %>
+		<smal>Escrito por: <%=@tarea.usuario.email%></smal>
+		<% end %>
+	</div>
+</div>
+
+<%= render "comentarios/form" %>
+<h2>Comentarios</h2>
+<ul>
+	<% @tarea.comentarios.each do |comentario|%>
+	<li><%=comentario.contenido%></li>
+	<% end%>
+</ul>
