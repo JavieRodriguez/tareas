@@ -27,6 +27,7 @@ class TareasController < ApplicationController
 		@tarea = Tarea.new(tarea_params)		
 		@tarea.usuario_id= current_usuario.id		
 		if @tarea.save #insert into tareas(titulo,descripcion) values (:titulo,:descripcion)		
+			TareasMailer.notificacion(@tarea).deliver_now
 			redirect_to @tarea
 		else
 			render :new
