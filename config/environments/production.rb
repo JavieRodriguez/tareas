@@ -65,11 +65,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
 
-    address: 'smtp.sendgrid.net',
+    address: '',
     port: 587,
     domain: 'https://tareaspiensadigital118.herokuapp.com/',
-    user_name: 'apikey',
-    password: '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',
+    user_name: '',
+    password: '',
     authentication: 'plain',
     enable_starttls_auto: true
 
