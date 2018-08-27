@@ -17,6 +17,8 @@
 !/log/.keep
 !/tmp/.keep
 
+/config/environments/production.rb
+
 /node_modules
 /yarn-error.log
 
